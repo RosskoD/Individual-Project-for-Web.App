@@ -1,0 +1,9 @@
+﻿@model int
+@{
+    ViewData["Title"] = "Delete Category";
+}
+
+<h2>Are you sure you want to delete this category?</h2>
+<a asp-area="Admin" asp-controller="Categories" asp-action="Destroy" asp-route-id="@Model" class="btn btn-danger">Yes</a>
+<a asp-area="Admin" asp-controller="Categories" asp-action="All" class="btn btn-default">Cancel</a>
+
