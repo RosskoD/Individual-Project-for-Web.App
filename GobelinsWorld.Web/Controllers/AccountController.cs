@@ -1,6 +1,8 @@
 ﻿namespace GobelinsWorld.Web.Controllers
 {
     using Data.Models;
+    using GobelinsWorld.Services.Admin;
+    using GobelinsWorld.Web.Models;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
@@ -20,17 +22,23 @@
         private readonly SignInManager<User> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
+        private readonly ICategoryService categories;
+        private readonly IProducerService producers;
 
         public AccountController(
             UserManager<User> userManager,
             SignInManager<User> signInManager,
             IEmailSender emailSender,
-            ILogger<AccountController> logger)
+            ILogger<AccountController> logger,
+            ICategoryService categories,
+            IProducerService producers)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
+            this.categories = categories;
+            this.producers = producers;
         }
 
         [TempData]
@@ -40,11 +48,18 @@
         [AllowAnonymous]
         public async Task<IActionResult> Login(string returnUrl = null)
         {
+            var allCategories = await this.categories.All();
+            var allProducers = await this.producers.Brands();
+
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
             ViewData["ReturnUrl"] = returnUrl;
-            return View();
+            return View(new HomeIndexViewModel
+            {
+                Categories = allCategories,
+                Producers = allProducers
+            });
         }
 
         [HttpPost]

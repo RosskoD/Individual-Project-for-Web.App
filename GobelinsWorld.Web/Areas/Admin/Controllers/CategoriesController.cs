@@ -4,9 +4,7 @@
     using GobelinsWorld.Services.Admin.Models;
     using Infrastructure.Extensions;
     using Microsoft.AspNetCore.Mvc;
-    using Models.Categories;
     using System.Threading.Tasks;
-    using Web.Controllers;
 
     public class CategoriesController : BaseAdminController
     {
@@ -15,6 +13,13 @@
         public CategoriesController(ICategoryService categories)
         {
             this.categories = categories;
+        }
+        
+        public async Task<IActionResult> All()
+        {
+            var allCategories = await this.categories.All();
+
+            return View(allCategories);
         }
 
         public IActionResult Create()
@@ -75,7 +80,6 @@
         {
             return  View(id);
         }
-
         
         public async Task<IActionResult> Destroy(int id)
         {
@@ -94,13 +98,6 @@
             await this.categories.Delete(id);
 
             return RedirectToAction(nameof(All));
-        }
-
-        public async Task<IActionResult> All()
-        {
-            var allCategories =await this.categories.All();
-
-            return View(allCategories);
-        }
+        }       
     }
 }

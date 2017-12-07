@@ -1,14 +1,32 @@
 ﻿namespace GobelinsWorld.Web.Controllers
 {
+    using GobelinsWorld.Services.Admin;
     using Microsoft.AspNetCore.Mvc;
     using Models;
     using System.Diagnostics;
+    using System.Threading.Tasks;
 
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly ICategoryService categories;
+        private readonly IProducerService producers;
+
+        public HomeController(ICategoryService categories, IProducerService producers)
         {
-            return View();
+            this.categories = categories;
+            this.producers = producers;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var allCategories = await this.categories.All();
+            var allProducers = await this.producers.Brands();
+
+            return View(new HomeIndexViewModel
+            {
+                Categories = allCategories,
+                Producers=allProducers
+            });
         }
 
         public IActionResult About()

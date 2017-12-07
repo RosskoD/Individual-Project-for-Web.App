@@ -1,8 +1,0 @@
-﻿@model IEnumerable<CategoryFormServiceModel>
-
-<ul>
-   @foreach (var category in Model)
-   {
-       <li><a asp-area="Admin" asp-controller="Products" asp-action="All">@category.Name</a></li>
-   }
-</ul>

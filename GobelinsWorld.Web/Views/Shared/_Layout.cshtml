@@ -1,4 +1,5 @@
-﻿@model IEnumerable<CategoryFormServiceModel>
+﻿
+@*@model HomeIndexViewModel*@
 
 <!DOCTYPE html>
 <html>
@@ -19,7 +20,7 @@
     </environment>
 </head>
 <body>
-    <div class="container-fluid center-block">
+    <div class="container center-block">
         <div class="col-md-10 center-block">
             <nav class="navbar navbar-inverse navbar-fixed-top">
                 <div class="container">
@@ -56,7 +57,7 @@
                     <li data-target="#myCarousel" data-slide-to="2"></li>
                     <li data-target="#myCarousel" data-slide-to="3"></li>
                 </ol>
-                <div  class="carousel-inner" role="listbox">
+                <div class="carousel-inner" role="listbox">
                     <div class="item active ">
                         <img style="height:200px" src="http://static.blisby.com/products/5e0a2c23940352f4/0.jpg" alt="GobelinsWorld" class="img-responsive" />
                     </div>
@@ -67,7 +68,7 @@
                         <img style="height:200px" src="https://dmcbg.com/includes/modules/kiss_image_thumbnailer/thumbs/200x200_dmc_cenina_7600.jpg" alt="GobelinsWorld" class="img-responsive" />
                     </div>
                     <div class="item">
-                        <img style="height:200px"  src="https://i5.walmartimages.com/asr/4f613510-bf84-4764-8555-7fcada09bb49_1.679a7a91e6c6b5f2991ce10477440736.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF" alt="GobelinsWorld" class="img-responsive" />
+                        <img style="height:200px" src="https://i5.walmartimages.com/asr/4f613510-bf84-4764-8555-7fcada09bb49_1.679a7a91e6c6b5f2991ce10477440736.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF" alt="GobelinsWorld" class="img-responsive" />
                     </div>
                 </div>
                 <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -81,26 +82,45 @@
             </div>
             <div class="container body-content">
                 <div class="row">
-                    <div class="col-md-3">
-                        <h4>Products Categories</h4>
-                        @*<ul>
-                            @foreach (var category in Model)
-                            {
-                                <li><a asp-area="Admin" asp-controller="Products" asp-action="All">@category.Name</a></li>
-                            }
-                        </ul>*@
-                    </div>
+                    @*@if (!User.IsInRole(WebConstants.AdministratorRole))
+                    {*@
+                        <div class="col-md-3">
+                            <h4>Products Categories</h4>
+                            @*<ul>
+                                @foreach (var category in Model.Categories)
+                                {
+                                    <li><a asp-area="Admin" asp-controller="Products" asp-action="All">@category.Name</a></li>
+                                }
+                            </ul>*@
+                            @*@RenderSection("_CategoriesSection")*@
+                        </div>
+                    @*}*@
                     <div class="col-md-9">
                         @RenderBody()
                     </div>
                 </div>
             </div>
             <hr />
-            <footer>
-                <p>&copy; 2017 - GobelinsWorld.Web</p>
-            </footer>
         </div>
     </div>
+    @*@if (!User.IsInRole(WebConstants.AdministratorRole))
+    {*@
+        <div class="row">
+            <div class="col-md-10 center-block">
+                <h4>Brands</h4>
+                @*@foreach (var producer in Model.Producers)
+                {
+                    <a asp-area="Admin" asp-controller="Products" asp-action="Brands"><img src="@producer.LogoUrl" /></a>
+                }*@
+
+            </div>
+        </div>
+    @*}*@
+    <br />
+
+    <footer style="text-align:center">
+        <p>&copy; 2017 - GobelinsWorld.Web</p>
+    </footer>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
