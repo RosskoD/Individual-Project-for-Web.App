@@ -1,14 +1,14 @@
-﻿body {
+﻿/*body {
     padding-top: 50px;
     padding-bottom: 20px;
-}
+}*/
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
-.body-content {
+/*.body-content {
     padding-left: 15px;
     padding-right: 15px;
-}
+}*/
 
 /* Carousel */
 .carousel-caption p {
@@ -32,4 +32,44 @@
     .carousel-caption {
         display: none;
     }
+}
+
+#nav-bar {
+    top: 200px;
+}
+
+/*#myCarousel .img-responsive, .thumbnail > img,
+#myCarousel .thumbnail a > img,
+#myCarousel .carousel-inner > .item > img,
+#myCarousel .carousel-inner > .item > a > img {
+    display: inline;
+}*/
+
+#myCarousel .item {
+    text-align: center;
+}
+
+#myCarousel .item img {
+    display: inline-block;
+}
+
+#main-container {
+    padding-top: 250px;
+}
+
+#admin-main-container {
+    padding-top: 50px;
+}
+
+#brands {
+    text-align: center;
+}
+
+#brands a {
+    margin-right: 50px;
+}
+
+#brands h4 {
+    display: inline;
+    margin-right: 50px;
 }

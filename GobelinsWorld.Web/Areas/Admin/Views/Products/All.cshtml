@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ProductListingServiceModel>
+@{
+    ViewData["Title"] = "All Products";
+}
+
+<h2>@ViewData["Title"] <a asp-action="Create" class="btn btn-default">Add Product</a></h2>
+
+<br />
+@if (User.IsInRole(WebConstants.AdministratorRole))
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Weight</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Producer</th>
+                <th>Category</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+                {
+                <tr>
+                    <td> @product.Id</td>
+                    <td> @product.Name</td>
+                    <td> @product.Code</td>
+                    <td> @product.Weight</td>
+                    <td> @product.Price</td>
+                    <td> @product.Description</td>
+                    <td> @product.Producer</td>
+                    <td> @product.Category</td>
+                    <td>
+                        <a asp-area="Admin" asp-controller="Products" asp-action="Edit" asp-route-id="@product.Id" class="btn btn-warning btn-sm">Edit</a>
+                        <a asp-area="Admin" asp-controller="Products" asp-action="Delete" asp-route-id="@product.Id" class=" btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,10 +1,13 @@
-﻿namespace GobelinsWorld.Data.Models
+﻿namespace GobelinsWorld.Services.Admin.Models
 {
+    using GobelinsWorld.Common.Mapping;
+    using GobelinsWorld.Data.Models;
     using System.ComponentModel.DataAnnotations;
 
-    using static DataConstants;
+    using static Data.DataConstants;
+    using AutoMapper;
 
-    public class Product
+    public class ProductFormServiceModel : IMapFrom<Product>
     {
         public int Id { get; set; }
 
@@ -28,12 +31,10 @@
         [Required]
         public string ImageUrl { get; set; }
 
+        [Display(Name="Producer")]
         public int ProducerId { get; set; }
 
-        public Producer Producer { get; set; }
-
+        [Display(Name = "Category")]
         public int CategoryId { get; set; }
-
-        public Category Category { get; set; }
     }
 }

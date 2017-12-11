@@ -1,12 +1,14 @@
 ﻿namespace GobelinsWorld.Web.Areas.Admin.Models.Products
 {
+    using GobelinsWorld.Common.Mapping;
+    using GobelinsWorld.Data.Models;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using static Data.DataConstants;
 
-    public class ProductFormModel
+    public class ProductFormModel 
     {
         [Required]
         [MaxLength(ProductNameMaxLength)]

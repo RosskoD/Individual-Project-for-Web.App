@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GobelinsWorld.Common\GobelinsWorld.Common.csproj" />
     <ProjectReference Include="..\GobelinsWorld.Data\GobelinsWorld.Data.csproj" />
   </ItemGroup>
 

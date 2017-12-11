@@ -1,0 +1,17 @@
+﻿@model ProductPageListingViewModel
+@{
+    ViewData["Title"] = "All Products";
+}
+
+<h2>All</h2>
+
+@foreach (var product in Model.Products)
+{
+    <div class="col-md-3">
+        <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id"><img src="@product.ImageUrl" alt="@product.Name" /></a>
+        <p>@product.Name 
+        <p>@product.Price</p>
+        <a asp-controller="Cart" asp-action="Add">Buy</a>
+    </div>
+}
+
