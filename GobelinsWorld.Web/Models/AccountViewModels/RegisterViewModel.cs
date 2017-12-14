@@ -3,7 +3,7 @@
     using Data.Models;
     using System.ComponentModel.DataAnnotations;
 
-    public class RegisterViewModel
+    public class RegisterViewModel : HomeIndexViewModel
     {
         [Required]
         [EmailAddress]

@@ -33,6 +33,7 @@
             return await this.db.Producers
                 .Select(p => new ProducerBrandListingServiceModel
                 {
+                    Id=p.Id,
                     LogoUrl =p.LogoUrl
                 })
                 .ToListAsync();

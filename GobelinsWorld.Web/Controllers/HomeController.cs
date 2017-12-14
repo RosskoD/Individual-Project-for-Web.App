@@ -1,6 +1,8 @@
 ﻿namespace GobelinsWorld.Web.Controllers
 {
     using GobelinsWorld.Services.Admin;
+    using GobelinsWorld.Services.User;
+    using GobelinsWorld.Web.Models.ProductViewModels;
     using Microsoft.AspNetCore.Mvc;
     using Models;
     using System.Diagnostics;
@@ -8,44 +10,51 @@
 
     public class HomeController : Controller
     {
+        private readonly IUserProductService products;
         private readonly ICategoryService categories;
         private readonly IProducerService producers;
 
-        public HomeController(ICategoryService categories, IProducerService producers)
+        public HomeController(IUserProductService products, ICategoryService categories, IProducerService producers)
         {
+            this.products = products;
             this.categories = categories;
             this.producers = producers;
         }
 
         public async Task<IActionResult> Index()
-        {
-            var allCategories = await this.categories.All();
-            var allProducers = await this.producers.Brands();
-
-            return View(new HomeIndexViewModel
-            {
-                Categories = allCategories,
-                Producers=allProducers
+        {        
+            return base.View(new ProductIndexListingViewModel {
+                Products = await this.products.New(),
+                Categories = await this.categories.All(),
+                Producers = await this.producers.Brands(),
             });
         }
 
-        public IActionResult About()
+        public async Task<IActionResult> About()
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
+            return View(await GetCategoriesAndProducers());
         }
 
-        public IActionResult Contact()
+        public async Task<IActionResult> Contact()
         {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
+            return View(await GetCategoriesAndProducers());
         }
 
-        public IActionResult Error()
+        public async Task<IActionResult> Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorViewModel {
+                Categories = await this.categories.All(),
+                Producers = await this.producers.Brands(),
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        
+        private async Task<HomeIndexViewModel> GetCategoriesAndProducers()
+        {
+            return new HomeIndexViewModel
+            {
+                Categories = await this.categories.All(),
+                Producers = await this.producers.Brands()
+            };
         }
     }
 }

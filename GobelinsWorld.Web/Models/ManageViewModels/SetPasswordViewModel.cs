@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace GobelinsWorld.Web.Models.ManageViewModels
+﻿namespace GobelinsWorld.Web.Models.ManageViewModels
 {
-    public class SetPasswordViewModel
+    using System.ComponentModel.DataAnnotations;
+
+    public class SetPasswordViewModel : HomeIndexViewModel
     {
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]

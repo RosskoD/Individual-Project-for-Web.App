@@ -4,6 +4,7 @@
     using Data;
     using Data.Models;
     using GobelinsWorld.Services.Admin;
+    using GobelinsWorld.Services.User;
     using Infrastructure.Extensions;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -43,6 +44,7 @@
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IProducerService, ProducerService>();
+            services.AddTransient<IUserProductService, UserProductService>();
 
             services.AddAutoMapper();
 

@@ -1,6 +1,7 @@
 ﻿namespace GobelinsWorld.Web.Controllers
 {
     using Data.Models;
+    using GobelinsWorld.Services.Admin;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
@@ -23,6 +24,8 @@
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
         private readonly UrlEncoder _urlEncoder;
+        private readonly ICategoryService categories;
+        private readonly IProducerService producers;
 
         private const string AuthenicatorUriFormat = "otpauth://totp/{0}:{1}?secret={2}&issuer={0}&digits=6";
 
@@ -31,13 +34,18 @@
           SignInManager<User> signInManager,
           IEmailSender emailSender,
           ILogger<ManageController> logger,
-          UrlEncoder urlEncoder)
+          UrlEncoder urlEncoder,
+          ICategoryService categories,
+          IProducerService producers
+          )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
             _urlEncoder = urlEncoder;
+            this.categories = categories;
+            this.producers = producers;
         }
 
         [TempData]
@@ -46,6 +54,9 @@
         [HttpGet]
         public async Task<IActionResult> Index()
         {
+            var allCategories = await this.categories.All();
+            var allProducers = await this.producers.Brands();
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
@@ -54,11 +65,21 @@
 
             var model = new IndexViewModel
             {
-                Username = user.UserName,
+                Username = user.Email,
                 Email = user.Email,
-                PhoneNumber = user.PhoneNumber,
                 IsEmailConfirmed = user.EmailConfirmed,
-                StatusMessage = StatusMessage
+                StatusMessage = StatusMessage,
+                FirstName=user.FirstName,
+                LastName=user.LastName,
+                PhoneNumber = user.PhoneNumber,
+                Country=user.Country,
+                State=user.State,
+                City=user.City,
+                ZipCode=user.ZipCode,
+                StreetAddress=user.StreetAddress,
+                IsPersonalAccount=user.IsPersonalAccount,
+                Categories =allCategories,
+                Producers=allProducers
             };
 
             return View(model);
@@ -130,6 +151,9 @@
         [HttpGet]
         public async Task<IActionResult> ChangePassword()
         {
+            var allCategories = await this.categories.All();
+            var allProducers = await this.producers.Brands();
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
@@ -142,7 +166,12 @@
                 return RedirectToAction(nameof(SetPassword));
             }
 
-            var model = new ChangePasswordViewModel { StatusMessage = StatusMessage };
+            var model = new ChangePasswordViewModel
+            {
+                StatusMessage = StatusMessage,
+                Categories = allCategories,
+                Producers = allProducers
+            };
             return View(model);
         }
 

@@ -2,7 +2,7 @@ using System;
 
 namespace GobelinsWorld.Web.Models
 {
-    public class ErrorViewModel
+    public class ErrorViewModel : HomeIndexViewModel
     {
         public string RequestId { get; set; }
 

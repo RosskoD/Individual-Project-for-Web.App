@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace GobelinsWorld.Web.Models.ManageViewModels
+﻿namespace GobelinsWorld.Web.Models.ManageViewModels
 {
-    public class ChangePasswordViewModel
+    using System.ComponentModel.DataAnnotations;
+
+    public class ChangePasswordViewModel : HomeIndexViewModel
     {
         [Required]
         [DataType(DataType.Password)]

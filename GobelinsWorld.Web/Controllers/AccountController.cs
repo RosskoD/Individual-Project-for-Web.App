@@ -2,7 +2,6 @@
 {
     using Data.Models;
     using GobelinsWorld.Services.Admin;
-    using GobelinsWorld.Web.Models;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
@@ -55,7 +54,7 @@
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
             ViewData["ReturnUrl"] = returnUrl;
-            return View(new HomeIndexViewModel
+            return View(new LoginViewModel
             {
                 Categories = allCategories,
                 Producers = allProducers
@@ -217,12 +216,19 @@
 
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult Register(string returnUrl = null)
+        public async Task<IActionResult> Register(string returnUrl = null)
         {
+            var allCategories = await this.categories.All();
+            var allProducers = await this.producers.Brands();
+
             ViewData["ReturnUrl"] = returnUrl;
+
             return View(new RegisterViewModel
-            {Country=Country.Bulgaria,
-            IsPersonalAccount=true
+            {
+                Categories = allCategories,
+                Producers = allProducers,
+                Country=Country.Bulgaria,
+                IsPersonalAccount=true
             });
         }
 
@@ -236,11 +242,11 @@
             {
                 var user = new User
                 {
-                    UserName=model.Email,
+                    UserName = model.Email,
                     Email = model.Email,
-                    FirstName=model.FirstName,
-                    LastName=model.LastName,
-                    PhoneNumber=model.PhoneNumber,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    PhoneNumber = model.PhoneNumber,
                     Country = model.Country,
                     State = model.State,
                     City = model.City,

@@ -3,9 +3,8 @@
     using AutoMapper.QueryableExtensions;
     using Data;
     using Data.Models;
-    using GobelinsWorld.Services.Admin.Models;
-    using GobelinsWorld.Services.Models;
     using Microsoft.EntityFrameworkCore;
+    using Models;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -26,23 +25,7 @@
                 .ThenBy(p => p.ProducerId)
                 .ThenByDescending(p => p.Id).ProjectTo<ProductListingServiceModel>()
                 .ToListAsync();
-        }
-
-        public async Task<IEnumerable<ProductByCategoryListingServiceModel>> AllByCategory(int id, int page=1, int pageSize=10)
-        {
-            return await this.db.Products
-                .Where(P=>P.CategoryId==id)
-                .OrderByDescending(p => p.Id)
-                .Skip((page-1)*pageSize)
-                .Take(pageSize)
-                .ProjectTo<ProductByCategoryListingServiceModel>()
-                .ToListAsync();
-        }
-
-        public int Total()
-        {
-            return this.db.Products.Count();
-        }
+        }       
 
         public async Task Create(string name, string code, double weight, decimal price, string description, string imageUrl, int producerId, int categoryId)
         {

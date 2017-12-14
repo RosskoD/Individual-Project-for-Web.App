@@ -1,0 +1,8 @@
+﻿@model HomeIndexViewModel
+
+    @foreach (var producer in Model.Producers)
+    {
+        <a asp-area="" asp-controller="Products" asp-action="ByProducer" asp-route-id="@producer.Id"><img src="@producer.LogoUrl" style="height:100px; width:150px" /></a>       
+    }
+
+

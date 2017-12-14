@@ -1,13 +1,15 @@
 ﻿namespace GobelinsWorld.Web.Models.ProductViewModels
 {   
-    using GobelinsWorld.Services.Models;
+    using GobelinsWorld.Services.User.Models;
     using System.Collections.Generic;
 
-    public class ProductPageListingViewModel
+    public class ProductPageListingViewModel : HomeIndexViewModel
     {
-        public IEnumerable<ProductByCategoryListingServiceModel> Products { get; set; }
+        public IEnumerable<UserProductListingServiceModel> Products { get; set; }
 
         public int CurrentPage { get; set; }
+
+        public int TotalProducts { get; set; }
 
         public int TotalPages { get; set; }
 

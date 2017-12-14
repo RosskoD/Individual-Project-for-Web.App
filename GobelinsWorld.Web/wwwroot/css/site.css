@@ -73,3 +73,7 @@
     display: inline;
     margin-right: 50px;
 }
+
+.pagination .disabled a {
+    pointer-events: none;
+}

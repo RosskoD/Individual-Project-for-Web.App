@@ -1,7 +1,4 @@
-﻿
-@*@model HomeIndexViewModel*@
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -81,39 +78,25 @@
 
             <div id="main-container" class="container body-content">
                 <div class="row">
-                    @*@if (!User.IsInRole(WebConstants.AdministratorRole))
-                    {*@
-                        <div class="col-md-3">
-                            <h4>Products Categories</h4>
-                            @*<ul>
-                                @foreach (var category in Model.Categories)
-                                {
-                                    <li><a asp-area="Admin" asp-controller="Products" asp-action="All">@category.Name</a></li>
-                                }
-                            </ul>*@
-                            @*@RenderSection("_CategoriesSection")*@
+                        <div class="col-md-3" >
+                            <br />
+                            <div style="text-align:center"><h4>Products Categories</h4></div>                          
+                            <br />
+                            @await Html.PartialAsync("_CategoriesPartial")
                         </div>
-                    @*}*@
+                  
                     <div class="col-md-9">
                         @RenderBody()
                     </div>
                 </div>
             </div>
-            <hr />
-    @*@if (!User.IsInRole(WebConstants.AdministratorRole))
-    {*@
+    <hr />
+   <br />
         <div  id="brands" class="row">
-            <div class="col-md-12">
-                <h4>Brands: </h4>
-                @*@foreach (var producer in Model.Producers)
-                {
-                    <a asp-area="Admin" asp-controller="Products" asp-action="Brands"><img src="@producer.LogoUrl" /></a>
-                }*@
-
-                <a >1</a><a >2</a><a>3</a>
+            <div class="col-md-12">               
+               @await  Html.PartialAsync("_BrandsPartial")
             </div>
         </div>
-    @*}*@
     <br />
 
     <footer style="text-align:center">

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace GobelinsWorld.Web.Models.AccountViewModels
+﻿namespace GobelinsWorld.Web.Models.AccountViewModels
 {
-    public class LoginViewModel
+    using System.ComponentModel.DataAnnotations;
+
+    public class LoginViewModel : HomeIndexViewModel
     {
         [Required]
         [EmailAddress]

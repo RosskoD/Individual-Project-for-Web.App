@@ -50,7 +50,7 @@
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Country"></label>
-                <select name="country" asp-items="@Html.GetEnumSelectList<Country>()"></select>
+                <select name="country" asp-for="Country" asp-items="@Html.GetEnumSelectList<Country>()"></select>
                 <span asp-validation-for="Country" class="text-danger"></span>
             </div>
             <div class="form-group">
