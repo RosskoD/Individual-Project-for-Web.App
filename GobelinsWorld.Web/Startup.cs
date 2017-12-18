@@ -4,6 +4,7 @@
     using Data;
     using Data.Models;
     using GobelinsWorld.Services.Admin;
+    using GobelinsWorld.Services.ShoppingCart;
     using GobelinsWorld.Services.User;
     using Infrastructure.Extensions;
     using Microsoft.AspNetCore.Builder;
@@ -45,8 +46,11 @@
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IProducerService, ProducerService>();
             services.AddTransient<IUserProductService, UserProductService>();
+            services.AddSingleton<IShoppingCartService, ShoppingCartService>();
 
             services.AddAutoMapper();
+
+            services.AddSession();
 
             services.AddMvc();
         }
@@ -70,7 +74,9 @@
             app.UseStaticFiles();
 
             app.UseAuthentication();
-            
+
+            app.UseSession();
+
             app.UseMvc(routes =>
             {
 

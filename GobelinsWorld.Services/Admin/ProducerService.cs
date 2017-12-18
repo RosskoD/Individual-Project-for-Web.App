@@ -38,7 +38,7 @@
                 })
                 .ToListAsync();
         }
-
+        
         public async Task Create(string name, string logoUrl)
         {
             var producer = new Producer

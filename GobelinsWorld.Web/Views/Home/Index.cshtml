@@ -4,7 +4,7 @@
 }
 <div style="text-align:center">
     <h2>Wellcome to our store! We wish you pleasant shopping!</h2>
-    <h5>If you are here for the first time and you want to buy some product , you should register first.</h5>
+    <h5> If you are our client, please <a asp-area="" asp-controller="Account" asp-action="Login">login</a> with your profile.If you are here for the first time and you like to order , you should <a asp-area="" asp-controller="Account" asp-action="Register">register</a> first.</h5>
 </div>
 <hr />
 
@@ -22,9 +22,9 @@
         {
             <a asp-area="Admin" asp-controller="Products" asp-action="Edit" asp-route-id="@product.Id" class="btn btn-warning btn-sm">Edit</a>
             <a asp-area="Admin" asp-controller="Products" asp-action="Delete" asp-route-id="@product.Id" class=" btn btn-danger btn-sm">Delete</a>
-        }
-        else
-        { <a asp-area="" asp-controller="Cart" asp-action="Add" asp-route-id="@product.Id">Add to cart</a>}
+            }
+            else
+            { <a asp-area="" asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@product.Id" class="btn btn-default">Add to cart</a>}
     </div>
 }
 

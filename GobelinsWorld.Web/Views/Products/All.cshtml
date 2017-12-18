@@ -17,7 +17,7 @@
         }
         else
         {
-            <button type="submit" class="btn btn-primary" asp-area="" asp-controller="Cart" asp-action="Add">Add to cart</button>
+            <a asp-area="" asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@product.Id" class="btn btn-default">Add to cart</a>
         }
     </div>
 }

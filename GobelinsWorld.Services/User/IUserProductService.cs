@@ -13,6 +13,8 @@
 
         Task<IEnumerable<UserProductListingServiceModel>> AllByProducer(int id, int page, int pageSize);
 
+        Task<IEnumerable<UserProductListingServiceModel>> AllBySearch(string searchText, int page, int pageSize);
+
         Task<ProductDetailServiceModel> Detail(int id);
 
         int Total();

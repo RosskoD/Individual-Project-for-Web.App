@@ -48,6 +48,19 @@
                 .ToListAsync();
         }
 
+        public async Task<IEnumerable<UserProductListingServiceModel>> AllBySearch(string searchText, int page = 1, int pageSize = 10)
+        {
+            searchText = searchText ?? string.Empty;
+
+            return await this.db.Products
+                .Where(p => p.Name.ToLower().Contains(searchText.ToLower()))
+                .OrderByDescending(p => p.Id)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ProjectTo<UserProductListingServiceModel>()
+                .ToListAsync();
+        }
+
         public async Task<ProductDetailServiceModel> Detail(int id)
         {
             return await this.db.Products

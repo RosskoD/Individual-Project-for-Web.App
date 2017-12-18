@@ -38,6 +38,12 @@
             return View("All", await GetProducts(page, allProducts));
         }
 
+        public async Task<IActionResult> Search(string search , int page = 1)
+        {
+            var allProducts = await this.products.AllBySearch(search, page, PageSize);
+
+            return View("All", await GetProducts(page, allProducts));
+        }
 
         public async Task<IActionResult> Detail(int id)
         {
