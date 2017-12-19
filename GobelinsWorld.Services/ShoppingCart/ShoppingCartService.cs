@@ -1,11 +1,8 @@
 ﻿namespace GobelinsWorld.Services.ShoppingCart
 {
-    using GobelinsWorld.Data;
     using Models;
-    using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
-    using System.Linq;
 
     public class ShoppingCartService : IShoppingCartService
     {
@@ -16,11 +13,11 @@
             this.carts = new ConcurrentDictionary<string, ShoppingCart>();
         }
 
-        public void AddToCart(string id, int productId)
+        public void AddToCart(string id, int productId, int quantity)
         {
             ShoppingCart shoppingCart = this.GetShoppingCart(id);
 
-            shoppingCart.AddItem(productId);
+            shoppingCart.AddItem(productId, quantity);
         }
 
         public void EditQuantity(string id, int productId, int quantity)
@@ -41,10 +38,7 @@
         {
             ShoppingCart shoppingCart = this.GetShoppingCart(id);
 
-            foreach (var item in shoppingCart.Items)
-            {
-                shoppingCart.RemoveItem(item.ProductId);
-            }
+            shoppingCart.Clear();
            
         }
 

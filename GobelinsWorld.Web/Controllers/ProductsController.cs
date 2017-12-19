@@ -2,12 +2,12 @@
 {
     using GobelinsWorld.Services.Admin;
     using GobelinsWorld.Services.User;
+    using GobelinsWorld.Services.User.Models;
     using Microsoft.AspNetCore.Mvc;
     using Models.ProductViewModels;
     using System;
-    using System.Threading.Tasks;
     using System.Collections.Generic;
-    using GobelinsWorld.Services.User.Models;
+    using System.Threading.Tasks;
 
     public class ProductsController : Controller
     {

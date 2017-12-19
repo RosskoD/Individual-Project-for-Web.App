@@ -2,9 +2,9 @@
 {
     using GobelinsWorld.Services.Admin;
     using GobelinsWorld.Services.User;
-    using GobelinsWorld.Web.Models.ProductViewModels;
     using Microsoft.AspNetCore.Mvc;
     using Models;
+    using Models.ProductViewModels;
     using System.Diagnostics;
     using System.Threading.Tasks;
 

@@ -46,6 +46,7 @@
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IProducerService, ProducerService>();
             services.AddTransient<IUserProductService, UserProductService>();
+            services.AddTransient<IOrderService, OrderService>();
             services.AddSingleton<IShoppingCartService, ShoppingCartService>();
 
             services.AddAutoMapper();

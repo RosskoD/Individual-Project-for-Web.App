@@ -5,7 +5,7 @@
 
     public interface IShoppingCartService
     {
-        void AddToCart(string id, int productId);
+        void AddToCart(string id, int productId, int quantity);
 
         void EditQuantity(string id, int productId, int quantity);
 
@@ -13,7 +13,6 @@
 
         void Clear(string id);
 
-        IEnumerable<CartItem> GetItems(string id);
-        
+        IEnumerable<CartItem> GetItems(string id);        
     }
 }

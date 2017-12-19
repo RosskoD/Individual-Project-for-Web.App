@@ -1,14 +1,13 @@
 ﻿namespace GobelinsWorld.Web.Areas.Admin.Controllers
 {
     using GobelinsWorld.Services.Admin;
-    using GobelinsWorld.Web.Areas.Admin.Models.Products;
+    using Infrastructure.Extensions;
     using Microsoft.AspNetCore.Mvc;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using System.Linq;
     using Microsoft.AspNetCore.Mvc.Rendering;
-    using GobelinsWorld.Web.Infrastructure.Extensions;
-    using GobelinsWorld.Web.Controllers;
+    using Models.Products;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
 
     public class ProductsController : BaseAdminController
     {

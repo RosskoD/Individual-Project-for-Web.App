@@ -1,0 +1,28 @@
+﻿@model IEnumerable<OrderListingServiceModel>
+@{
+    ViewData["Title"] = "All Orders";
+}
+<h2>@ViewData["Title"]</h2>
+<br />
+@if (User.IsInRole(WebConstants.AdministratorRole))
+{
+    @foreach (var order in Model)
+    { <hr />
+        <p> № @order.Id</p>
+
+        <p><strong>User Name: @(order.User.FirstName + " " + order.User.LastName)</strong> - @(order.User.PhoneNumber)</p>
+        <p><strong>Address:</strong></p>
+        <p>@(order.User.ZipCode), @(order.User.Country)</p>
+        <p> @(order.User.State), @(order.User.City)</p>
+        <p> @(order.User.StreetAddress)</p>
+        <p></p>
+        <p><strong>Products:</strong></p>
+        foreach (var item in order.Items)
+        {
+            <p> @item.ProductId - @item.Quantity</p>
+        }
+
+        <p><strong>Total Amount:@order.TotalPrice</strong></p>
+        <hr />
+    }
+}

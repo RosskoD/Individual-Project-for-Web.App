@@ -1,6 +1,7 @@
 ﻿namespace GobelinsWorld.Data.Models
 {
     using Microsoft.AspNetCore.Identity;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using static DataConstants;
@@ -34,5 +35,7 @@
         public string StreetAddress { get; set; }
 
         public bool IsPersonalAccount { get; set; }
+
+        public List<Order> Orders { get; set; } = new List<Order>();
     }
 }

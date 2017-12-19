@@ -1,6 +1,7 @@
 ﻿namespace GobelinsWorld.Services.Admin.Models
 {
     using System.ComponentModel.DataAnnotations;
+
     using static Data.DataConstants;
 
    public class CategoryFormServiceModel

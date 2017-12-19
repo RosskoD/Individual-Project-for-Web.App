@@ -22,9 +22,9 @@
         {
             <a asp-area="Admin" asp-controller="Products" asp-action="Edit" asp-route-id="@product.Id" class="btn btn-warning btn-sm">Edit</a>
             <a asp-area="Admin" asp-controller="Products" asp-action="Delete" asp-route-id="@product.Id" class=" btn btn-danger btn-sm">Delete</a>
-            }
-            else
-            { <a asp-area="" asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@product.Id" class="btn btn-default">Add to cart</a>}
+        }
+        else
+        { <a asp-area="" asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@product.Id" class="btn btn-primary">Add to cart</a>}
     </div>
 }
 

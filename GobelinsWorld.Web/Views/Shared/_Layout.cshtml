@@ -36,7 +36,7 @@
                     <img style="height:200px" src="https://dmcbg.com/includes/modules/kiss_image_thumbnailer/thumbs/200x200_dmc_cenina_7600.jpg" alt="GobelinsWorld" class="img-responsive" />
                 </div>
                 <div class="item">
-                    <img style="height:200px" src="https://i5.walmartimages.com/asr/4f613510-bf84-4764-8555-7fcada09bb49_1.679a7a91e6c6b5f2991ce10477440736.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF" alt="GobelinsWorld" class="img-responsive" />
+                    <img style="height:200px" src="https://cfl-createforless.netdna-ssl.com/p-images/4/2015/1207/302246-4-1.jpg" alt="GobelinsWorld" class="img-responsive" />
                 </div>
             </div>
             <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -63,13 +63,14 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                   
+
 
                     @if (User.IsInRole(WebConstants.AdministratorRole))
                     {
                         <li><a asp-area="Admin" asp-controller="Producers" asp-action="All">All Producers</a></li>
-                                <li><a asp-area="Admin" asp-controller="Categories" asp-action="All">All Category</a></li>
-                                <li><a asp-area="Admin" asp-controller="Products" asp-action="All">All Product</a></li>
+                        <li><a asp-area="Admin" asp-controller="Categories" asp-action="All">All Categories</a></li>
+                        <li><a asp-area="Admin" asp-controller="Products" asp-action="All">All Products</a></li>
+                        <li><a asp-area="Admin" asp-controller="Orders" asp-action="All">All Orders</a></li>
                     }
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -85,7 +86,7 @@
             <div class="col-md-3">
                 <br />
                 <form class="form-inline">
-                    <input id="search-text" type="search" class="form-control" placeholder="Search product..." /><input type="submit" asp-area="" asp-controller="Products" asp-action="Search" asp-route-search="search-text" class="btn btn-default pull-right" value="Search" />
+                    <input name="search" type="search" class="form-control" placeholder="Search product..." /><input type="submit" asp-area="" asp-controller="Products" asp-action="Search"  class="btn btn-default pull-right" value="Search" />
                 </form>
                 <br />
                 <div style="text-align:center"><h4>Products Categories</h4></div>

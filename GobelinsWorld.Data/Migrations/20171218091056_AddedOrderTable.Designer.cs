@@ -9,8 +9,8 @@ namespace GobelinsWorld.Data.Migrations
     using System;
 
     [DbContext(typeof(GobelinsWorldDbContext))]
-    [Migration("20171204183349_InitialTables")]
-    partial class InitialTables
+    [Migration("20171218091056_AddedOrderTable")]
+    partial class AddedOrderTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,6 +31,42 @@ namespace GobelinsWorld.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("GobelinsWorld.Data.Models.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<decimal>("TotalPrice");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("GobelinsWorld.Data.Models.OrderItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("OrderId");
+
+                    b.Property<decimal>("Price");
+
+                    b.Property<int>("ProductId");
+
+                    b.Property<int>("Quantity");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("GobelinsWorld.Data.Models.Producer", b =>
@@ -270,6 +306,21 @@ namespace GobelinsWorld.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("GobelinsWorld.Data.Models.Order", b =>
+                {
+                    b.HasOne("GobelinsWorld.Data.Models.User", "User")
+                        .WithMany("Orders")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("GobelinsWorld.Data.Models.OrderItem", b =>
+                {
+                    b.HasOne("GobelinsWorld.Data.Models.Order", "Order")
+                        .WithMany("Items")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("GobelinsWorld.Data.Models.Product", b =>

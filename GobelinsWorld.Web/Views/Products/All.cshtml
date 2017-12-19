@@ -17,11 +17,12 @@
         }
         else
         {
-            <a asp-area="" asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@product.Id" class="btn btn-default">Add to cart</a>
+            <a asp-area="" asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@product.Id" class="btn btn-primary">Add to cart</a>
         }
     </div>
 }
-    @if (Model.TotalProducts > Model.Products.Count())
+<div class="row" style="text-align:center">
+    @if (Model.TotalPages != 1)
     {
         <ul class="pagination">
             <li class="@(Model.CurrentPage==1?"disabled":string.Empty)">
@@ -36,3 +37,5 @@
             </li>
         </ul>
     }
+</div>
+

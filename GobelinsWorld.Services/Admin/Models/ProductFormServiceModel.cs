@@ -1,11 +1,10 @@
 ﻿namespace GobelinsWorld.Services.Admin.Models
 {
-    using GobelinsWorld.Common.Mapping;
-    using GobelinsWorld.Data.Models;
+    using Common.Mapping;
+    using Data.Models;
     using System.ComponentModel.DataAnnotations;
 
     using static Data.DataConstants;
-    using AutoMapper;
 
     public class ProductFormServiceModel : IMapFrom<Product>
     {

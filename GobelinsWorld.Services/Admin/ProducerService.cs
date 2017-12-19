@@ -3,10 +3,10 @@
     using Data;
     using Data.Models;
     using Microsoft.EntityFrameworkCore;
+    using Models;
     using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using GobelinsWorld.Services.Admin.Models;
     using System.Linq;
+    using System.Threading.Tasks;
 
     public class ProducerService : IProducerService
     {

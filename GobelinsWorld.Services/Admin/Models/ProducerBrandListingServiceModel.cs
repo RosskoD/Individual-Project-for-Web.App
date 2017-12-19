@@ -1,8 +1,8 @@
-﻿using GobelinsWorld.Common.Mapping;
-using GobelinsWorld.Data.Models;
-
-namespace GobelinsWorld.Services.Admin.Models
+﻿namespace GobelinsWorld.Services.Admin.Models
 {
+    using Common.Mapping;
+    using Data.Models;
+
     public class ProducerBrandListingServiceModel : IMapFrom<Producer>
     {
         public int Id { get; set; }

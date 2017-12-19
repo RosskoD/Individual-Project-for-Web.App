@@ -12,7 +12,7 @@
             this.items = new List<CartItem>();
         }
 
-        public void AddItem(int productId)
+        public void AddItem(int productId, int quantity)
         {
             var item = this.items.FirstOrDefault(i => i.ProductId == productId);
 
@@ -21,7 +21,7 @@
                 item = new CartItem
                 {
                     ProductId = productId,
-                    Quantity = 1
+                    Quantity = quantity==0 ? 1: quantity
                 };
 
                 this.items.Add(item);
@@ -47,7 +47,8 @@
 
         public void RemoveItem(int productId)
         {
-            var item = this.items.FirstOrDefault(p=>p.ProductId==productId);
+            var item = this.items
+                .FirstOrDefault(p=>p.ProductId==productId);
 
             if (item==null)
             {
@@ -57,6 +58,10 @@
             this.items.Remove(item);
         }
 
+        public void Clear()
+        {
+            this.items.Clear();
+        }
         public IEnumerable<CartItem> Items=> new List<CartItem>(this.items);
         
     }

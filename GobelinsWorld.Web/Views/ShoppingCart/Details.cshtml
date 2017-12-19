@@ -21,7 +21,7 @@ else
         </thead>
         <tbody>
             @foreach (var item in Model.Products)
-            {
+                {
                 <tr>
                     <td>
                         <a class="btn btn-default btn-sm" asp-area="" asp-controller="ShoppingCart" asp-action="RemoveFromCart" asp-route-id="@item.ProductId">
@@ -29,24 +29,29 @@ else
                         </a> @item.Name
                     </td>
                     <td>@item.Price lv</td>
-                    <td>@item.Quantity</td>
+                    <td>
+                        <form asp-area="" asp-controller="ShoppingCart" asp-action="Update" asp-route-id="@item.ProductId">
+                            <input name="quantity" type="number" step="1" value="@item.Quantity" />
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </form>
+                    </td>
                     <td>@(item.Price * item.Quantity) lv</td>
                 </tr>
             }
         </tbody>
     </table>
-    <div class="row">
-        <div class="col-md-6"><strong>Total Weight: @Model.Products.Sum(p => p.Weight * p.Quantity)</strong></div>
-        <div class="col-md-6" style="text-align:right"><strong>Grand Total: @Model.Products.Sum(p => p.Price * p.Quantity) lv</strong></div>
-    </div>
-    <br />
-    <div class="row">
-        <div class="col-md-6">
-            <a class="btn btn-success" asp-area="" asp-controller="ShoppingCart" asp-action="Clear">Clear</a>
-            <a class="btn btn-success" asp-area="" asp-controller="ShoppingCart" asp-action="Update">Update</a>
+        <div class="row">
+            <div class="col-md-6"><strong>Total Weight: @Model.Products.Sum(p => p.Weight * p.Quantity) kg</strong></div>
+            <div class="col-md-6" style="text-align:right"><strong>Grand Total: @Model.Products.Sum(p => p.Price * p.Quantity) lv</strong></div>
         </div>
-        <div class="col-md-6" style="text-align:right">
-            <a class="btn btn-success" asp-area="" asp-controller="ShoppingCart" asp-action="FinishOrder">Order</a>
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+                <a class="btn btn-primary" asp-area="" asp-controller="ShoppingCart" asp-action="Clear">Clear</a>
+
+            </div>
+            <div class="col-md-6" style="text-align:right">
+                <a class="btn btn-primary" asp-area="" asp-controller="ShoppingCart" asp-action="Finish">Order</a>
+            </div>
         </div>
-    </div>
 }
