@@ -32,7 +32,7 @@
             this.userManager = userManager;
         }
 
-        public IActionResult AddToCart(int id,[FromForm] int quantity)
+        public IActionResult AddToCart(int id, [FromForm] int quantity)
         {
             var shoppingCartId = this.HttpContext.Session.GetShoppingCartId();
 
@@ -59,16 +59,16 @@
             return RedirectToAction(nameof(Details));
         }
 
-        public IActionResult Update(int id,[FromForm] int quantity)
+        public IActionResult Update(int id, [FromForm] int quantity)
         {
             var shoppingCartId = this.HttpContext.Session.GetShoppingCartId();
 
             var items = this.shoppingCartService.GetItems(shoppingCartId);
 
             var itemsWithDetails = GetCartItems(items);
-            
-                this.shoppingCartService.EditQuantity(shoppingCartId, id, quantity);            
-           
+
+            this.shoppingCartService.EditQuantity(shoppingCartId, id, quantity);
+
             return RedirectToAction(nameof(Details));
         }
 
@@ -110,6 +110,7 @@
             {
                 order.Items.Add(new OrderItem
                 {
+                    Name = item.Name,
                     ProductId = item.ProductId,
                     Quantity = item.Quantity,
                     Price = item.Price

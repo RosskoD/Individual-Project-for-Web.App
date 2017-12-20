@@ -8,18 +8,17 @@
 {
     @foreach (var order in Model)
     { <hr />
-        <p> № @order.Id</p>
+        <p>Order № @order.Id</p>
 
         <p><strong>User Name: @(order.User.FirstName + " " + order.User.LastName)</strong> - @(order.User.PhoneNumber)</p>
         <p><strong>Address:</strong></p>
         <p>@(order.User.ZipCode), @(order.User.Country)</p>
         <p> @(order.User.State), @(order.User.City)</p>
         <p> @(order.User.StreetAddress)</p>
-        <p></p>
         <p><strong>Products:</strong></p>
         foreach (var item in order.Items)
         {
-            <p> @item.ProductId - @item.Quantity</p>
+            <p>@item.Id: @item.Name - @item.Quantity</p>
         }
 
         <p><strong>Total Amount:@order.TotalPrice</strong></p>
