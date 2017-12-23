@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GobelinsWorld.Services", "G
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GobelinsWorld.Web", "GobelinsWorld.Web\GobelinsWorld.Web.csproj", "{9DB19B78-D434-40E8-8424-0D2CFFE0A9D2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GobelinsWorld.Test", "GobelinsWorld.Test\GobelinsWorld.Test.csproj", "{2FFCF749-1AA5-45ED-915F-D811E5E8C25F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{9DB19B78-D434-40E8-8424-0D2CFFE0A9D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DB19B78-D434-40E8-8424-0D2CFFE0A9D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DB19B78-D434-40E8-8424-0D2CFFE0A9D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FFCF749-1AA5-45ED-915F-D811E5E8C25F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FFCF749-1AA5-45ED-915F-D811E5E8C25F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FFCF749-1AA5-45ED-915F-D811E5E8C25F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FFCF749-1AA5-45ED-915F-D811E5E8C25F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
